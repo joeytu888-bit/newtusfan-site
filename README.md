@@ -1,6 +1,9 @@
 # NEWTUSFAN concept site
 
-A static, single-page denim manufacturing concept built from the **Story** template by HTML5 UP and adapted for GitHub Pages.
+A bilingual static denim manufacturing concept built from the **Story** template by HTML5 UP and adapted for GitHub Pages.
+
+- English: `/index.html`
+- Chinese: `/zh/index.html`
 
 ## Preview locally
 
