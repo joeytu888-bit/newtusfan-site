@@ -10,6 +10,20 @@
 	}
 
 	if (year) year.textContent = new Date().getFullYear();
+
+	if (window.jQuery && jQuery.fn.scrolly) {
+		jQuery('.smooth-scroll').scrolly({
+			easing: 'linear',
+			speed: 800
+		});
+
+		jQuery('.smooth-scroll-middle').scrolly({
+			anchor: 'middle',
+			easing: 'linear',
+			speed: 800
+		});
+	}
+
 	window.addEventListener('scroll', updateHeader, { passive: true });
 	updateHeader();
 })();
