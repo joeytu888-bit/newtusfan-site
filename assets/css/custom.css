@@ -34,7 +34,8 @@ body { color: var(--ink); background: var(--paper); padding-top: 4.5rem; }
 .site-header nav { display: flex; gap: 2.2rem; }
 .site-header nav a { font-size: .78rem; font-weight: 600; letter-spacing: .05em; }
 .header-actions { justify-self: end; display: flex; align-items: center; gap: .75rem; }
-.language-switch { min-width: 2.4rem; text-align: center; color: var(--denim) !important; font-size: .75rem; font-weight: 800; }
+.language-switch { min-width: 2.4rem; padding: .58rem .85rem; text-align: center; background: #e9f3ff; border: 1px solid #cfe3f8 !important; border-radius: 999px; color: var(--denim) !important; font-size: .75rem; font-weight: 800; transition: background .2s ease, color .2s ease; }
+.language-switch:hover { background: var(--denim); color: #fff !important; }
 .header-contact { background: var(--ink); color: #fff !important; padding: .7rem 1.2rem; border-radius: 999px; font-size: .78rem; font-weight: 700; }
 
 .hero .content { padding-top: 6rem !important; }
@@ -69,6 +70,16 @@ input[type="submit"].primary:hover, input[type="reset"].primary:hover, input[typ
 .card-copy h3 { color: #fff; font-size: 1.55rem; margin: .3rem 0; }
 .card-copy p { font-size: .83rem; margin: 0; opacity: .78; }
 .texture-card img { object-position: 46% center; }
+
+.zh-gallery-section { padding: 8rem 3rem; background: #f5f7f9; }
+.zh-gallery-section .inner { padding-bottom: 3.5rem !important; }
+.zh-gallery-section h2 { font-size: clamp(2.4rem, 4.5vw, 4.8rem); line-height: 1.03; letter-spacing: -.045em; }
+.zh-gallery-section .inner > p:last-child { max-width: 38rem; margin-left: auto; margin-right: auto; color: var(--muted); }
+.zh-photo-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; max-width: 1400px; margin: 0 auto; }
+.zh-photo-card { position: relative; aspect-ratio: 3 / 4; margin: 0; overflow: hidden; background: #e8ebef; }
+.zh-photo-card img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s cubic-bezier(.2,.75,.25,1); }
+.zh-photo-card:hover img { transform: scale(1.035); }
+.zh-photo-card figcaption { position: absolute; right: 1rem; bottom: 1rem; display: grid; place-items: center; width: 2.25rem; height: 2.25rem; border-radius: 50%; background: rgba(255,255,255,.9); color: var(--ink); font-size: .68rem; font-weight: 800; }
 
 .capability-section .content, .quality-section .content { padding: 7rem !important; }
 .capability-section h2, .quality-section h2 { font-size: clamp(2.5rem, 4.2vw, 4.8rem); line-height: 1.02; letter-spacing: -.045em; }
@@ -123,10 +134,10 @@ input[type="submit"].primary:hover, input[type="reset"].primary:hover, input[typ
 	html, body { width: 100%; max-width: 100%; overflow-x: hidden; }
 	body { padding-top: 4rem; padding-bottom: 4rem; }
 	#wrapper { width: 100%; max-width: 100%; overflow: hidden; }
-	.site-header { height: 4rem; padding: 0 1.25rem; grid-template-columns: 1fr auto; }
+	.site-header { width: auto !important; max-width: 100vw; height: 4rem; padding: 0 1.25rem; box-sizing: border-box; grid-template-columns: minmax(0, 1fr) auto; }
 	.site-header nav { display: none; }
-	.header-actions { gap: .45rem; }
-	.language-switch { min-width: 2rem; font-size: .7rem; }
+	.header-actions { position: absolute; top: 50%; right: 1.25rem; min-width: 0; gap: .45rem; transform: translateY(-50%); }
+	.language-switch { min-width: 2rem; padding: .5rem .65rem; font-size: .68rem; }
 	.header-contact { padding: .6rem .9rem; font-size: .7rem; }
 	.banner.style1, .spotlight.style1 { display: flex !important; width: 100% !important; max-width: 100% !important; align-items: stretch !important; }
 	.banner.style1 { flex-direction: column-reverse !important; }
@@ -142,6 +153,9 @@ input[type="submit"].primary:hover, input[type="reset"].primary:hover, input[typ
 	.collection-intro { width: 100% !important; padding-left: .5rem !important; padding-right: .5rem !important; }
 	.collection-grid { grid-template-columns: 1fr; }
 	.collection-card { width: 100%; min-height: 32rem; }
+	.zh-gallery-section { padding: 5rem 1rem; }
+	.zh-gallery-section .inner { width: 100% !important; padding-left: .5rem !important; padding-right: .5rem !important; }
+	.zh-photo-grid { grid-template-columns: 1fr; max-width: 34rem; }
 	.capability-section .content, .quality-section .content { padding: 4rem 1.5rem !important; text-align: center !important; }
 	.clean-list { text-align: left; }
 	.quality-tags { justify-content: center; }
@@ -153,7 +167,7 @@ input[type="submit"].primary:hover, input[type="reset"].primary:hover, input[typ
 
 @media screen and (max-width: 560px) {
 	.brand { font-size: .86rem; }
-	.header-contact { font-size: .65rem; padding: .55rem .7rem; }
+	.header-contact { display: none; }
 	.hero h1 { font-size: clamp(2.7rem, 13vw, 3.2rem); overflow-wrap: anywhere; }
 	.hero .major { font-size: 1rem; }
 	.hero .actions { flex-direction: column; }
