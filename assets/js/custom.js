@@ -71,9 +71,20 @@
 			var progressValue = Math.min((timestamp - startedAt) / 1200, 1);
 			var eased = 1 - Math.pow(1 - progressValue, 3);
 			renderCounter(counter, target * eased);
-			if (progressValue < 1) window.requestAnimationFrame(tick);
+			if (progressValue < 1) {
+				counter._animationFrame = window.requestAnimationFrame(tick);
+			} else {
+				counter._animationFrame = null;
+			}
 		}
-		window.requestAnimationFrame(tick);
+		counter._animationFrame = window.requestAnimationFrame(tick);
+	}
+
+	function resetCounter(counter) {
+		if (counter._animationFrame) window.cancelAnimationFrame(counter._animationFrame);
+		counter._animationFrame = null;
+		counter.setAttribute('data-counted', 'false');
+		renderCounter(counter, 0);
 	}
 
 	if (counters.length) {
@@ -81,13 +92,15 @@
 			counters.forEach(animateCounter);
 		} else {
 			counters.forEach(function (counter) { renderCounter(counter, 0); });
-			var counterObserver = new IntersectionObserver(function (entries, observer) {
+			var counterObserver = new IntersectionObserver(function (entries) {
 				entries.forEach(function (entry) {
-					if (!entry.isIntersecting) return;
-					animateCounter(entry.target);
-					observer.unobserve(entry.target);
+					if (entry.intersectionRatio >= 0.45) {
+						animateCounter(entry.target);
+					} else {
+						resetCounter(entry.target);
+					}
 				});
-			}, { threshold: 0.45 });
+			}, { threshold: [0, 0.45] });
 			counters.forEach(function (counter) { counterObserver.observe(counter); });
 		}
 	}
