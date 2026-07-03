@@ -52,6 +52,45 @@
 		}
 	});
 
+	var counters = Array.prototype.slice.call(document.querySelectorAll('.stat-value'));
+	function renderCounter(counter, value) {
+		counter.textContent = (counter.getAttribute('data-prefix') || '') + Math.round(value).toLocaleString() + (counter.getAttribute('data-suffix') || '');
+	}
+
+	function animateCounter(counter) {
+		if (counter.getAttribute('data-counted') === 'true') return;
+		counter.setAttribute('data-counted', 'true');
+		var target = Number(counter.getAttribute('data-target')) || 0;
+		if (reduceMotion) {
+			renderCounter(counter, target);
+			return;
+		}
+		var startedAt = null;
+		function tick(timestamp) {
+			if (!startedAt) startedAt = timestamp;
+			var progressValue = Math.min((timestamp - startedAt) / 1200, 1);
+			var eased = 1 - Math.pow(1 - progressValue, 3);
+			renderCounter(counter, target * eased);
+			if (progressValue < 1) window.requestAnimationFrame(tick);
+		}
+		window.requestAnimationFrame(tick);
+	}
+
+	if (counters.length) {
+		if (reduceMotion || !('IntersectionObserver' in window)) {
+			counters.forEach(animateCounter);
+		} else {
+			counters.forEach(function (counter) { renderCounter(counter, 0); });
+			var counterObserver = new IntersectionObserver(function (entries, observer) {
+				entries.forEach(function (entry) {
+					if (!entry.isIntersecting) return;
+					animateCounter(entry.target);
+					observer.unobserve(entry.target);
+				});
+			}, { threshold: 0.45 });
+			counters.forEach(function (counter) { counterObserver.observe(counter); });
+		}
+	}
 	var galleryImages = Array.prototype.slice.call(document.querySelectorAll('[data-lightbox]'));
 	if (galleryImages.length) {
 		var isChinese = document.body.classList.contains('zh-page');

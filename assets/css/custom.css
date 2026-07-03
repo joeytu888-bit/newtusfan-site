@@ -56,6 +56,8 @@ input[type="submit"].primary:hover, input[type="reset"].primary:hover, input[typ
 .stats-grid div:last-child { border: 0; }
 .stats-grid strong { font-size: 2.1rem; line-height: 1; }
 .stats-grid span { color: var(--muted); font-size: .75rem; letter-spacing: .04em; }
+.stat-value { color: var(--denim); font-size: clamp(2.4rem, 4vw, 4rem) !important; font-variant-numeric: tabular-nums; letter-spacing: -.04em; }
+.stats-disclaimer { margin: -1.6rem 0 2rem; color: #9aa2ab; font-size: .64rem; letter-spacing: .05em; }
 
 .collection-section { padding: 7rem 3rem 8rem; }
 .collection-intro { max-width: 780px; padding-bottom: 3.5rem !important; }
@@ -212,6 +214,8 @@ input[type="submit"].primary:hover, input[type="reset"].primary:hover, input[typ
 	.stats-grid { padding-left: .5rem !important; padding-right: .5rem !important; }
 	.stats-grid strong { font-size: 1.2rem; }
 	.stats-grid span { font-size: .67rem; }
+	.stat-value { font-size: 2rem !important; }
+	.stats-disclaimer { margin-top: -1rem; padding: 0 1rem; }
 	.collection-card { min-height: 27rem; }
 	.contact-links { grid-template-columns: 1fr; }
 	.zh-page .hero h1 { font-size: clamp(2.35rem, 11vw, 2.9rem); line-height: 1.12; }
