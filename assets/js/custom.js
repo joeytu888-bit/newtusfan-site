@@ -104,6 +104,27 @@
 			counters.forEach(function (counter) { counterObserver.observe(counter); });
 		}
 	}
+
+	var comparisons = Array.prototype.slice.call(document.querySelectorAll('[data-compare]'));
+	comparisons.forEach(function (comparison) {
+		var slider = comparison.querySelector('input[type="range"]');
+		function updateComparison() {
+			comparison.style.setProperty('--position', slider.value + '%');
+		}
+		slider.addEventListener('input', updateComparison);
+		slider.addEventListener('change', updateComparison);
+		updateComparison();
+	});
+
+	var pageVideos = Array.prototype.slice.call(document.querySelectorAll('.factory-video'));
+	if (pageVideos.length && 'IntersectionObserver' in window) {
+		var videoObserver = new IntersectionObserver(function (entries) {
+			entries.forEach(function (entry) {
+				if (!entry.isIntersecting && !entry.target.paused) entry.target.pause();
+			});
+		}, { threshold: 0.1 });
+		pageVideos.forEach(function (video) { videoObserver.observe(video); });
+	}
 	var galleryImages = Array.prototype.slice.call(document.querySelectorAll('[data-lightbox]'));
 	if (galleryImages.length) {
 		var isChinese = document.body.classList.contains('zh-page');
