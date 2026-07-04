@@ -1,4 +1,4 @@
-﻿:root {
+:root {
 	--ink: #111318;
 	--muted: #66717e;
 	--line: #dfe4ea;
@@ -119,31 +119,31 @@ input[type="submit"].primary:hover, input[type="reset"].primary:hover, input[typ
 .floating-contact {
 	position: fixed;
 	z-index: 9999;
-	right: 1.25rem;
+	right: .75rem;
 	top: 50%;
 	bottom: auto;
 	display: flex;
 	flex-direction: column;
-	width: min(16rem, calc(100vw - 2rem));
+	width: min(10rem, calc(100vw - 1.5rem));
 	overflow: hidden;
 	border: 1px solid rgba(17,19,24,.08);
-	border-radius: 1.2rem;
-	background: rgba(255,255,255,.96);
-	box-shadow: 0 20px 60px rgba(8,35,66,.18);
-	backdrop-filter: blur(14px);
-	-webkit-backdrop-filter: blur(14px);
+	border-radius: .75rem;
+	background: rgba(255,255,255,.76);
+	box-shadow: 0 12px 36px rgba(8,35,66,.12);
+	backdrop-filter: blur(9px);
+	-webkit-backdrop-filter: blur(9px);
 	transform: translateY(-50%);
 }
 .floating-contact-head {
 	position: relative;
-	padding: 1rem 1rem .9rem;
-	background: linear-gradient(180deg, rgba(233,243,255,.88), rgba(255,255,255,.96));
+	padding: .6rem .65rem .55rem;
+	background: linear-gradient(180deg, rgba(233,243,255,.68), rgba(255,255,255,.72));
 	border-bottom: 1px solid var(--line);
 }
 .floating-contact-head p {
 	margin: 0 0 .25rem;
 	color: var(--muted);
-	font-size: .64rem;
+	font-size: .5rem;
 	font-weight: 700;
 	letter-spacing: .14em;
 	text-transform: uppercase;
@@ -151,15 +151,15 @@ input[type="submit"].primary:hover, input[type="reset"].primary:hover, input[typ
 .floating-contact-head strong {
 	display: block;
 	color: var(--ink);
-	font-size: .95rem;
+	font-size: .65rem;
 	font-weight: 800;
 	letter-spacing: .12em;
 }
 .floating-contact a {
 	display: flex;
 	align-items: center;
-	gap: .75rem;
-	padding: .95rem 1rem;
+	gap: .45rem;
+	padding: .55rem .65rem;
 	border: 0;
 	color: var(--ink);
 	text-decoration: none;
@@ -173,13 +173,13 @@ input[type="submit"].primary:hover, input[type="reset"].primary:hover, input[typ
 .floating-contact .icon {
 	display: grid;
 	place-items: center;
-	flex: 0 0 2.5rem;
-	width: 2.5rem;
-	height: 2.5rem;
+	flex: 0 0 1.55rem;
+	width: 1.55rem;
+	height: 1.55rem;
 	border-radius: 50%;
 	background: #eef5fd;
 	color: var(--denim);
-	font-size: .95rem;
+	font-size: .65rem;
 }
 .floating-contact a span:last-child {
 	display: flex;
@@ -188,14 +188,14 @@ input[type="submit"].primary:hover, input[type="reset"].primary:hover, input[typ
 }
 .floating-contact a small {
 	color: var(--muted);
-	font-size: .6rem;
+	font-size: .48rem;
 	font-weight: 700;
 	letter-spacing: .12em;
 	text-transform: uppercase;
 }
 .floating-contact a strong {
 	color: var(--ink);
-	font-size: .8rem;
+	font-size: .58rem;
 	font-weight: 700;
 	line-height: 1.35;
 	word-break: break-word;
@@ -349,3 +349,28 @@ input[type="submit"].primary:hover, input[type="reset"].primary:hover, input[typ
 	*, *:before, *:after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
 
+
+/* Lightweight arcade game */
+.air-game-section { padding: 7rem 2rem; background: #eef5fb; }
+.air-game-intro { max-width: 48rem; margin: 0 auto 2.5rem; }
+.air-game-intro h2 { margin-bottom: 1rem; font-size: clamp(2.2rem, 4vw, 4.2rem); line-height: 1.04; letter-spacing: -.04em; }
+.air-game-intro p:last-child { color: var(--muted); }
+.air-game-shell { width: min(100%, 58rem); margin: 0 auto; overflow: hidden; border: 1px solid rgba(17,19,24,.08); border-radius: 1.5rem; background: rgba(255,255,255,.86); box-shadow: 0 24px 65px rgba(8,35,66,.12); }
+.air-game-hud { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .9rem 1.2rem; color: var(--ink); font-size: .78rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+.air-game-stats { display: flex; gap: 1.4rem; }
+.air-game-stage { position: relative; aspect-ratio: 3 / 2; background: #07182d; }
+.air-game-stage canvas { display: block; width: 100%; height: 100%; cursor: crosshair; touch-action: none; }
+.air-game-message { position: absolute; inset: 0; display: grid; place-items: center; padding: 2rem; background: rgba(4,16,31,.38); color: #fff; font-size: clamp(.95rem, 2vw, 1.25rem); font-weight: 800; text-align: center; pointer-events: none; transition: opacity .2s ease; }
+.air-game-message.is-hidden { opacity: 0; }
+.air-game-controls { display: flex; justify-content: center; gap: .75rem; padding: 1rem; }
+.air-game-controls button { min-width: 8.5rem; margin: 0; }
+.air-game-help { margin: 0; padding: 0 1rem 1.2rem; color: var(--muted); font-size: .76rem; text-align: center; }
+@media screen and (max-width: 736px) {
+  .air-game-section { padding: 4.5rem .8rem; }
+  .air-game-shell { border-radius: 1rem; }
+  .air-game-hud { padding: .7rem .85rem; font-size: .66rem; }
+  .air-game-stats { gap: .8rem; }
+  .air-game-controls { padding: .8rem; }
+  .air-game-controls button { min-width: 0; flex: 1; padding: 0 .8rem; font-size: .7rem; }
+  .air-game-help { font-size: .68rem; }
+}
