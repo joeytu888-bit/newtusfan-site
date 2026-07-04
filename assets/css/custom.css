@@ -124,7 +124,7 @@ input[type="submit"].primary:hover, input[type="reset"].primary:hover, input[typ
 	bottom: auto;
 	display: flex;
 	flex-direction: column;
-	width: min(10rem, calc(100vw - 1.5rem));
+	width: min(13rem, calc(100vw - 1.5rem));
 	overflow: hidden;
 	border: 1px solid rgba(17,19,24,.08);
 	border-radius: .75rem;
