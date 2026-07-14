@@ -119,7 +119,7 @@ input[type="submit"].primary:hover, input[type="reset"].primary:hover, input[typ
 .floating-contact {
 	position: fixed;
 	z-index: 9999;
-	right: .75rem;
+	left: .75rem;
 	top: 50%;
 	bottom: auto;
 	display: flex;
