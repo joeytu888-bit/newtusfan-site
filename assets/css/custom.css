@@ -43,6 +43,12 @@ body { color: var(--ink); background: var(--paper); padding-top: 4.5rem; }
 .hero h1 { font-size: clamp(3.7rem, 7vw, 7.6rem); line-height: .92; letter-spacing: -.065em; font-weight: 700; margin-bottom: 2rem; }
 .hero .major { max-width: 38rem; color: #4f5965; font-size: 1.18rem; }
 .hero .image img { object-position: center 42%; }
+.hero .image { background: #f3f5f7; }
+.hero .image img {
+	object-fit: contain !important;
+	object-position: center center !important;
+	background: #f3f5f7;
+}
 .eyebrow { color: var(--denim); font-size: .73rem; font-weight: 800; letter-spacing: .17em; text-transform: uppercase; margin-bottom: 1.15rem; }
 .concept-note { margin-top: 2rem; color: #8a929c; font-size: .72rem; }
 
